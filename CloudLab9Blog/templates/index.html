@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Blog</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        form {
+            margin-bottom: 20px;
+        }
+        textarea {
+            width: 100%;
+            height: 100px;
+        }
+        .blog-post {
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome to My Blog!</h1>
+
+    <!-- Blog Form -->
+    <form id="blogForm">
+        <label for="blogTitle">Blog Title:</label>
+        <input type="text" id="blogTitle" name="blogTitle" required><br>
+        <label for="blogContent">Blog Content:</label>
+        <textarea id="blogContent" name="blogContent" required></textarea><br>
+        <button type="submit">Submit Blog</button>
+    </form>
+
+    <!-- Display Existing Blogs -->
+    <div id="blogContainer"></div>
+
+    <script>
+        document.getElementById('blogForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            // Get form values
+            var title = document.getElementById('blogTitle').value;
+            var content = document.getElementById('blogContent').value;
+
+            // Create a new blog post
+            var postDiv = document.createElement('div');
+            postDiv.className = 'blog-post';
+            postDiv.innerHTML = '<h2>' + title + '</h2><p>' + content + '</p>';
+
+            // Append the new post to the container
+            document.getElementById('blogContainer').appendChild(postDiv);
+
+            // Clear the form
+            document.getElementById('blogForm').reset();
+        });
+    </script>
+</body>
+</html>
